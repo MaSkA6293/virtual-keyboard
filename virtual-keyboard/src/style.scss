@@ -1,1 +1,217 @@
 @import "~normalize.css";
+@font-face {
+  font-family: "Caveat";
+  src: url("../src/assets/fonts/Caveat-VariableFont_wght.ttf");
+}
+:root {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  min-width: 320px;
+  a {
+    text-decoration: none;
+    transition: 0.5s;
+  }
+}
+
+body {
+  font-family: "Caveat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  color: white;
+  background-image: url("./assets/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.wrapper {
+  max-width: 1200px;
+  min-width: 800px;
+  max-height: 800px;
+  width: 1200px;
+  margin: 0 auto;
+  perspective: 2000px;
+}
+
+.text-aria {
+  min-width: 93%;
+  width: 93%;
+  height: 200px;
+  max-height: 200px;
+  min-height: 100px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: rgb(0 67 255 / 0%);
+  transition: 0.6s ease;
+  border: 2px solid #000f1f;
+  caret-color: wheat;
+  color: #eaebed;
+  border-radius: 5px;
+  backdrop-filter: blur(2px);
+  resize: none;
+  font-size: 60px;
+  &::placeholder {
+    color: #eaebed;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: rgb(0 145 202 / 43%);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 126, 161);
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(0, 177, 226);
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.keyboard {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background: radial-gradient(circle, rgb(0 8 47) 0%, rgb(0 5 27 / 86%) 100%);
+  border-radius: 15px;
+  padding: 6px;
+  transform: rotateX(20deg);
+  &__row {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    height: 50px;
+    padding: 10px;
+  }
+  &__key {
+    min-width: 4%;
+    width: 5.5%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 4px 6px #005294;
+    border-radius: 9px;
+    border-top: 1px inset #6e9bc5;
+    border-left: 1px inset #6e9bc5;
+    &:hover {
+      cursor: pointer;
+      background: linear-gradient(
+        0deg,
+        rgb(110 0 0 / 74%) 24%,
+        rgb(0 23 62) 71%
+      );
+    }
+    &.Tab {
+      width: 7%;
+    }
+    &.Delete {
+      width: 7%;
+    }
+    &.CapsLock {
+      width: 14%;
+    }
+    &.ShiftLeft {
+      width: 14%;
+    }
+    &.Enter {
+      width: 14%;
+    }
+    &.Space {
+      width: 40%;
+    }
+    &.Backspace {
+      width: 16%;
+    }
+    &.Tab,
+    &.Delete,
+    &.CapsLock,
+    &.ShiftLeft,
+    &.ShiftRight,
+    &.AltLeft,
+    &.AltRight,
+    &.Win,
+    &.ControlLeft,
+    &.ControlRight,
+    &.Backspace,
+    &.Enter {
+      font-weight: 700;
+      color: #ffc085;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  box-shadow: 1px 4px 4px #ff0000;
+  border-top: 1px inset #ffffff;
+  border-left: 1px inset #ffffff;
+  color: red;
+  transform: scale(0.95);
+}
+
+.caption {
+  text-align: center;
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto;
+    color: #f4b882;
+  }
+  &:hover {
+    cursor: default;
+  }
+  &__for {
+    color: #f4b882;
+    font-weight: 600;
+  }
+  &__image {
+    width: 50px;
+    height: 50px;
+    background: url("./assets/icons/windows.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 10px;
+    &-ubuntu {
+      background: url("./assets/icons/ubuntu.svg");
+      border-radius: 50%;
+    }
+  }
+}
+.change-language {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    cursor: default;
+  }
+  &__title {
+    font-size: 55px;
+    margin: 10px 20px;
+    color: #ffc085;
+  }
+  span {
+    display: block;
+  }
+  .key {
+    &:hover {
+      cursor: default;
+      background: transparent;
+    }
+  }
+
+  &__plus {
+    padding: 0 20px;
+    font-size: 50px;
+    font-style: italic;
+  }
+}
