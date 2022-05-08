@@ -18,10 +18,10 @@ function handlerKeyDown(e) {
       state.isPressedAltLeft = true;
     }
     if (e.code === "ControlRight") {
-      state.isPressedControlLeft = true;
+      state.isPressedControlRight = true;
     }
     if (e.code === "AltRight") {
-      state.isPressedAltLeft = true;
+      state.isPressedAltRight = true;
     }
     changeActionDown(e.code);
     const char = getChar(e.code);
@@ -35,8 +35,14 @@ function handlerKeyUp(e) {
   if (e.code === "ControlLeft") {
     state.isPressedControlLeft = false;
   }
+  if (e.code === "ControlRight") {
+    state.isPressedControlRight = false;
+  }
   if (e.code === "AltLeft") {
     state.isPressedAltLeft = false;
+  }
+  if (e.code === "AltRight") {
+    state.isPressedAltRight = false;
   }
 
   const btn = document.querySelector(`.${e.code}`);
@@ -119,7 +125,12 @@ function changeActionDown(code) {
         changeCase("shiftCaps");
       }
     }
-    if (state.isPressedControlLeft && state.isPressedAltLeft) {
+    if (
+      (state.isPressedControlLeft && state.isPressedAltLeft) ||
+      (state.isPressedControlRight && state.isPressedAltRight) ||
+      (state.isPressedAltLeft && state.isPressedControlRight) ||
+      (state.isPressedControlLeft && state.isPressedAltRight)
+    ) {
       changeLanguage();
     }
   }
