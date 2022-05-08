@@ -17,6 +17,12 @@ function handlerKeyDown(e) {
     if (e.code === "AltLeft") {
       state.isPressedAltLeft = true;
     }
+    if (e.code === "ControlRight") {
+      state.isPressedControlLeft = true;
+    }
+    if (e.code === "AltRight") {
+      state.isPressedAltLeft = true;
+    }
     changeActionDown(e.code);
     const char = getChar(e.code);
     if (char !== undefined) {
