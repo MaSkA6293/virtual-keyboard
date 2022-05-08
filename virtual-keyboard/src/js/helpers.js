@@ -143,3 +143,102 @@ export function hideInactiveSymbols() {
   hide(shiftCaps);
   hide(ru);
 }
+
+export function printSymbol(char) {
+  const textAria = document.querySelector(".text-aria");
+  const start = textAria.selectionStart;
+  switch (char) {
+    case "CapsLock":
+      break;
+    case "Shift":
+      break;
+    case "Alt":
+      break;
+    case "Ctrl":
+      break;
+    case "Enter":
+      if (start === 0) {
+        textAria.value = `\n${textAria.value}`;
+        textAria.selectionStart = start + 1;
+        textAria.selectionEnd = start + 1;
+        return;
+      }
+      textAria.value = [...textAria.value]
+        .map((el, i) => {
+          if (i + 1 === start) {
+            return `${el}\n`;
+          }
+          return el;
+        })
+        .join("");
+      textAria.selectionStart = start + 1;
+      textAria.selectionEnd = start + 1;
+      break;
+    case "Backspace":
+      if (textAria.value.length !== 0) {
+        textAria.value = [...textAria.value]
+          .filter((el, i) => i !== start - 1)
+          .join("");
+        textAria.selectionStart = start - 1;
+        textAria.selectionEnd = start - 1;
+      }
+      break;
+    case "Del":
+      if (textAria.value.length !== textAria.selectionStart) {
+        textAria.value = [...textAria.value]
+          .filter((el, i) => i !== textAria.selectionStart)
+          .join("");
+        textAria.selectionStart = start;
+        textAria.selectionEnd = start;
+      }
+      break;
+    case "Tab":
+      if (start === 0) {
+        textAria.value = `    ${textAria.value}`;
+        textAria.selectionStart = start + 4;
+        textAria.selectionEnd = start + 4;
+        return;
+      }
+      textAria.value = [...textAria.value]
+        .map((el, i) => {
+          if (i + 1 === start) {
+            return `${el}    `;
+          }
+          return el;
+        })
+        .join("");
+      textAria.selectionStart = start + 4;
+      textAria.selectionEnd = start + 4;
+      break;
+    default:
+      if (start === 0) {
+        textAria.value = `${char}${textAria.value}`;
+        textAria.selectionStart = start + 1;
+        textAria.selectionEnd = start + 1;
+        return;
+      }
+      textAria.value = [...textAria.value]
+        .map((el, i) => {
+          if (i + 1 === start) {
+            return `${el}${char}`;
+          }
+          return el;
+        })
+        .join("");
+      textAria.selectionStart = start + 1;
+      textAria.selectionEnd = start + 1;
+  }
+}
+
+export function getChar(selector) {
+  const nodes = document.querySelector(`.${selector}`);
+  if (nodes !== null) {
+    let element = 0;
+    nodes.childNodes.forEach((item) => {
+      if (!item.classList.contains("hidden")) {
+        element = item;
+      }
+    });
+    return element.querySelector("span:not(.hidden)").textContent;
+  }
+}
