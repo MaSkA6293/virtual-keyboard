@@ -6,13 +6,19 @@
 git clone https://github.com/MaSkA6293/virtual-keyboard.git
 ```
 
-2. Install all the dependencies
+2. Go to the project folder
+
+```
+cd virtual-keyboard/
+```
+
+3. Install all the dependencies
 
 ```
 npm install
 ```
 
-3. Run the app
+4. Run the app
 
 ```
 npm run dev
